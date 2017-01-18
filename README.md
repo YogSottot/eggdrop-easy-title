@@ -45,3 +45,7 @@ http::register https 443 [list ::tls::socket -autoservername true]
         ::tls::socket -ssl3 false -ssl2 false -tls1 true -servername $host {*}$opts $host $port
     }
 ```
+Скрипт не работает должным образом на eggdrop-1.8.0. 
+Правильная работа проверена на непатченном 1.6.20.
+
+Я не являюсь автором скрипта, только добавил нужный функционал.
