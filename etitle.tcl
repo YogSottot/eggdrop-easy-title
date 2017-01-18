@@ -136,7 +136,7 @@ proc ::etitle::etitle_proc {nick uhost hand chan text} {
 proc ::etitle::etitle_parce {nick uhost hand chan query redirect start} {
 global etitle lastbind
 
-    set etitle_tok [::http::config -urlencoding utf-8 -useragent "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)"]
+    set etitle_tok [::http::config -urlencoding utf-8 -useragent "Mozilla/5.0 (X11; Linux x86_64; rv:45.5) Gecko/20100101 Firefox/45.5"]
     set etitle_tok [::http::geturl "$query" -binary 1 -timeout 20000 -headers [list Range "bytes=0-16384"]]  
     set data [::http::data $etitle_tok]
     set title "No title"
@@ -320,7 +320,7 @@ global etitle lastbind
 
 proc ::etitle::etitle_m3u {query} {
 global etitle
-    set etitle_tok [::http::config -urlencoding utf-8 -useragent "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)"]
+    set etitle_tok [::http::config -urlencoding utf-8 -useragent "Mozilla/5.0 (X11; Linux x86_64; rv:45.5) Gecko/20100101 Firefox/45.5"]
     set etitle_tok [::http::geturl "$query" -binary 1 -timeout 20000]  
     set data [::http::data $etitle_tok]
     ::http::cleanup $etitle_tok
@@ -331,7 +331,7 @@ global etitle
     regexp -nocase -- {Current Song: (.*?)</b>} $data "" song
 
     if {$etitle(radiosongs) > "0"} {
-    set etitle_tok [::http::config -urlencoding utf-8 -useragent "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)"]
+    set etitle_tok [::http::config -urlencoding utf-8 -useragent "Mozilla/5.0 (X11; Linux x86_64; rv:45.5) Gecko/20100101 Firefox/45.5"]
     set etitle_tok [::http::geturl "${query}played.html" -binary 1 -timeout 20000]  
     set data [::http::data $etitle_tok]
     ::http::cleanup $etitle_tok
@@ -353,7 +353,7 @@ global etitle
 proc ::etitle::etitle_tinyurl {url} {
 global etitle lastbind
 
-    set ua "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.5) Gecko/2008120122 Firefox/3.0.5"
+    set ua "Mozilla/5.0 (X11; Linux x86_64; rv:45.5) Gecko/20100101 Firefox/45.5"
     set http [::http::config -useragent $ua]
     set token [http::geturl "http://tinyurl.com/api-create.php?[http::formatQuery url $url]" -timeout 3000]
     upvar #0 $token state
