@@ -133,6 +133,10 @@ proc ::etitle::etitle_proc {nick uhost hand chan text} {
 }
 
 # Ïðîåäóðà ïàðñèíãà.
+package require http
+package require tls
+http::register https 443 [list ::tls::socket -autoservername true]
+
 proc ::etitle::etitle_parce {nick uhost hand chan query redirect start} {
 global etitle lastbind
 
